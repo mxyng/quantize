@@ -5,7 +5,7 @@ This repository contains the files to build [`ollama/quantize`](https://hub.dock
 ## Convert Pytorch model
 
 ```
-docker run --rm -v /path/to/model:/model ollama/quantize -q q4_0 /model
+docker run --rm -v /path/to/model/repo:/repo ollama/quantize -q q4_0 /repo
 ```
 
 ## Supported model families
