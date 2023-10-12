@@ -1,6 +1,6 @@
 # quantize
 
-This repository contains the files to build [`ollama/quantize`](https://hub.docker.com/r/ollama/quantize). It containerizes the scripts and utilities in [`llama.cpp`](https://github.com/ggerganov/llama.cpp) to create binary models to use with `llama.cpp` and compatible runners as Ollama.
+This repository contains the files to build [`ollama/quantize`](https://hub.docker.com/r/ollama/quantize). It containerizes the scripts and utilities in [`llama.cpp`](https://github.com/ggerganov/llama.cpp) to create binary models to use with `llama.cpp` and compatible runners as [Ollama](https://github.com/jmorganca/ollama).
 
 ## Convert Pytorch model
 
