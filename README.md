@@ -21,6 +21,10 @@ docker run --rm -v /path/to/model/repo:/repo ollama/quantize -q q4_0 /repo
 - `RWForCausalLM`
 - `FalconForCausalLM`
 
+### GPTNeoX
+
+- `GPTNeoXForCausalLM`
+
 ### StarCoder
 
 - `GPTBigCodeForCausalLM`

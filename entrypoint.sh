@@ -44,6 +44,7 @@ if [ ! -f "$MODEL/f16.bin" ]; then
     case "$ARCHITECTURE" in
         LlamaForCausalLM|MistralForCausalLM|YiForCausalLM) CONVERT='convert.py'; CONVERT_ARGS='--outtype f16' ;;
         RWForCausalLM|FalconForCausalLM) CONVERT='convert-falcon-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
+        GPTNeoXForCausalLM) CONVERT='convert-gptneox-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
         GPTBigCodeForCausalLM) CONVERT='convert-starcoder-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
         MPTForCausalLM) CONVERT='convert-mpt-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
         BaichuanForCausalLM) CONVERT='convert-baichuan-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
