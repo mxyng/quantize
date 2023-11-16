@@ -33,7 +33,7 @@ done
 
 shift $(( $OPTIND - 1 ))
 [ $# -eq 1 ] || usage
-MODEL=$1
+MODEL=$(realpath $1)
 
 if [ ! -f "$MODEL/f16.bin" ]; then
     # convert to f16 GGUF
@@ -42,7 +42,7 @@ if [ ! -f "$MODEL/f16.bin" ]; then
     CONVERT=
     CONVERT_ARGS=
     case "$ARCHITECTURE" in
-        LlamaForCausalLM|MistralForCausalLM) CONVERT='convert.py'; CONVERT_ARGS='--outtype f16' ;;
+        LlamaForCausalLM|MistralForCausalLM|YiForCausalLM) CONVERT='convert.py'; CONVERT_ARGS='--outtype f16' ;;
         RWForCausalLM|FalconForCausalLM) CONVERT='convert-falcon-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
         GPTBigCodeForCausalLM) CONVERT='convert-starcoder-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
         MPTForCausalLM) CONVERT='convert-mpt-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
