@@ -28,12 +28,13 @@ QUANT='q4_0'
 while getopts "hq:" OPTION; do
     case $OPTION in
         q) QUANT=$OPTARG ;;
+        *) usage ;;
     esac
 done
 
 shift $(( $OPTIND - 1 ))
 [ $# -eq 1 ] || usage
-MODEL=$1
+MODEL=$(realpath $1)
 
 if [ ! -f "$MODEL/f16.bin" ]; then
     # convert to f16 GGUF
@@ -41,15 +42,10 @@ if [ ! -f "$MODEL/f16.bin" ]; then
 
     CONVERT=
     CONVERT_ARGS=
-    case "$ARCHITECTURE" in
-        LlamaForCausalLM|MistralForCausalLM) CONVERT='convert.py'; CONVERT_ARGS='--outtype f16' ;;
-        RWForCausalLM|FalconForCausalLM) CONVERT='convert-falcon-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
-        GPTBigCodeForCausalLM) CONVERT='convert-starcoder-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
-        MPTForCausalLM) CONVERT='convert-mpt-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
-        BaichuanForCausalLM) CONVERT='convert-baichuan-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
-        PersimmonForCausalLM) CONVERT='convert-persimmon-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
-        RefactForCausalLM) CONVERT='convert-refact-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
-        BloomForCausalLM) CONVERT='convert-bloom-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
+    case "${ARCHITECTURE%ForCausalLM}" in
+        Llama|Mistral|Yi|LlavaLlama) CONVERT='convert.py'; CONVERT_ARGS='--outtype f16' ;;
+        RW|Falcon|GPTNeoX|GPTBigCode|MPT|GPTRefact|Bloom|Baichuan) CONVERT='convert-hf-to-gguf.py'; CONVERT_ARGS='--outtype f16' ;;
+        Persimmon) CONVERT='convert-persimmon-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
         *) echo >&2 "unknown architecture $ARCHITECTURE"; exit ;;
     esac
 

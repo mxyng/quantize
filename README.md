@@ -14,11 +14,16 @@ docker run --rm -v /path/to/model/repo:/repo ollama/quantize -q q4_0 /repo
 
 - `LlamaForCausalLM`
 - `MistralForCausalLM`
+- `YiForCausalLM`
 
 ### Falcon
 
 - `RWForCausalLM`
 - `FalconForCausalLM`
+
+### GPTNeoX
+
+- `GPTNeoXForCausalLM`
 
 ### StarCoder
 
