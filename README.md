@@ -8,6 +8,8 @@ This repository contains the files to build [`ollama/quantize`](https://hub.dock
 docker run --rm -v /path/to/model/repo:/repo ollama/quantize -q q4_0 /repo
 ```
 
+This will produce two binaries in the repo: `f16.bin`, the unquantized model weights in GGUF format, and `q4_0.bin`, the same weights after 4-bit quantization.
+
 ## Supported model families
 
 ### Llama2
@@ -15,6 +17,10 @@ docker run --rm -v /path/to/model/repo:/repo ollama/quantize -q q4_0 /repo
 - `LlamaForCausalLM`
 - `MistralForCausalLM`
 - `YiForCausalLM`
+- `LlavaLlamaForCausalLM`
+- `LlavaMistralForCausalLM`
+
+> Note: Llava models will produce other intermediary files: `llava.projector`, the vision tensors split from the Pytorch model, and `mmproj-model-f16.gguf`, the same tensors converted to GGUF. The final model will contain both the base model as well as the projector. Use `-m no` to disable this behaviour.
 
 ### Falcon
 
@@ -63,7 +69,7 @@ docker run --rm -v /path/to/model/repo:/repo ollama/quantize -q q4_0 /repo
 - `q5_K_S`, `q5_K_M`
 - `q6_K`
 
-Note: K-quants are not supported for Falcon models
+> Note: K-quants are not supported for Falcon models
 
 ## Learn more
 
