@@ -55,6 +55,10 @@ This will produce two binaries in the repo: `f16.bin`, the unquantized model wei
 
 - `BloomForCausalLM`
 
+### StableLM
+- `StableLMEpoch`
+- `LlavaStableLMEpoch`
+
 ## Supported quantizations
 
 - `q4_0` (default), `q4_1`
