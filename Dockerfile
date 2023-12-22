@@ -5,7 +5,7 @@ ARG BRANCH=master
 RUN apt-get update \
     && apt-get install -y git git-lfs build-essential cmake jq \
     && pip install torch --index-url https://download.pytorch.org/whl/cpu \
-    && pip install transformers sentencepiece pillow
+    && pip install transformers sentencepiece pillow protobuf
 
 RUN git clone --branch $BRANCH --single-branch https://github.com/ggerganov/llama.cpp.git llama.cpp \
     && cmake -S llama.cpp -B llama.cpp/build \
