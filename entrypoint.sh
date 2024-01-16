@@ -62,7 +62,7 @@ CONVERT=
 CONVERT_ARGS=
 case "${ARCHITECTURE%ForCausalLM}" in
     Llama|Mistral|Yi|LlavaLlama|LlavaMistral) CONVERT='convert.py'; CONVERT_ARGS='--outtype f16' ;;
-    RW|Falcon|GPTNeoX|GPTBigCode|MPT|GPTRefact|Bloom|Baichuan|StableLMEpoch|LlavaStableLMEpoch) CONVERT='convert-hf-to-gguf.py'; CONVERT_ARGS='--outtype f16' ;;
+    RW|Falcon|GPTNeoX|GPTBigCode|MPT|GPTRefact|Bloom|Baichuan|StableLMEpoch|LlavaStableLMEpoch|Mixtral) CONVERT='convert-hf-to-gguf.py'; CONVERT_ARGS='--outtype f16' ;;
     Persimmon) CONVERT='convert-persimmon-hf-to-gguf.py'; CONVERT_ARGS='1' ;;
     *) echo >&2 "unknown architecture $ARCHITECTURE"; exit ;;
 esac
